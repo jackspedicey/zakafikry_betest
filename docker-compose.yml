@@ -1,0 +1,19 @@
+services:
+  redis_zakafikry_betest:
+    image: redis/redis-stack:7.2.0-v10
+    ports:
+      - 6379:6379
+    volumes: 
+      - volume_zakafikry_betest:/data/cache
+  db_zakafikry_betest: 
+    image: mongo:8.0-rc
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+    volumes:
+      - volume_zakafikry_betest:/data/db
+volumes:
+  volume_zakafikry_betest:
+    driver: local
